@@ -16,10 +16,9 @@ I use AWS ECS for this task. But better way is utilizing kubernetes cluster with
 
 ## Key Takeoffs
 
-* This solution is not limited to creation of three buckets only. One can extend and add as many buckets as needed.
 * Variables are used to create resources based on the needs.
 * I use local backend but we could use S3 bucket with DynamoDB lock as a backend
-* Also, I just use default VPC to make it simple
+* Also, I use default VPC to make it simple
 
 ### Terraform versions
 
@@ -48,13 +47,29 @@ region = "us-east-1"
 rootdev = "test-lb-tf-1278585322.us-east-1.elb.amazonaws.com"
 ```
 ## Installation
-
+### Prerequisite
+EC2 instance (You should have an access to your aws bastion host and have sufficient privileges.)
+Terraform 
 ### Step 1 - Clone the repo
 
 ```
 git clone https://github.com/turanmehmet/rootdevs.git
 ```
-
+### Step 2 - Edit values.
+```
+cd rootdevs/dev && vi dev.tfvars
+```
+### Step 3 - Deploy the resources
+```
+terraform init
+terraform apply -var-file=dev/dev.tfvars
+```
+### Step 4 - Test it
+Copy the output rootdev load balancer dns name and paste it in your web browser
+### Destroy the resources
+```
+terraform destroy
+```
 ##   Author
 
 Mehmet Turan
