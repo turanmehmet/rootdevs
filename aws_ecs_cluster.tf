@@ -1,5 +1,5 @@
 resource "aws_ecs_cluster" "my_cluster" {
-  name = "my-cluster" # Naming the cluster
+  name = var.clustername
 }
 
 resource "aws_ecs_task_definition" "my_first_task" {
