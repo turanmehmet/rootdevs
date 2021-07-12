@@ -18,3 +18,11 @@ variable "container_port" {
   type    = number
   default = 4567
 }
+variable "host_port" {
+  type    = number
+  default = 4567
+}
+variable "image" {
+  type    = string
+  default = "my-first-service"
+}

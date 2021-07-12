@@ -8,12 +8,12 @@ resource "aws_ecs_task_definition" "my_first_task" {
   [
     {
       "name": "my-first-task",
-      "image": "rootdevs/reliability-interview-container:201805",
+      "image": "${var.image}",
       "essential": true,
       "portMappings": [
         {
-          "containerPort": 4567,
-          "hostPort": 4567
+          "containerPort": ${var.container_port},
+          "hostPort": ${var.host_port}
         }
       ],
       "memory": 512,
